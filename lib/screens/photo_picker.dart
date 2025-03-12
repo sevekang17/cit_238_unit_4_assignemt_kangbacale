@@ -64,7 +64,7 @@ class _PhotoPickerState extends State<PhotoPicker> {
             children: [
               DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Color(0xFF7F6BB2),
                 ),
                 child: Text(
                   'Menu',
