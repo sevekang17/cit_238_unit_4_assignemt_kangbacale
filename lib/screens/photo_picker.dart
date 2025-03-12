@@ -8,8 +8,6 @@ void main() {
 }
 
 class PhotoPicker extends StatefulWidget {
-  const PhotoPicker({super.key});
-
   @override
   _PhotoPickerState createState() => _PhotoPickerState();
 }
@@ -54,8 +52,6 @@ class _PhotoPickerState extends State<PhotoPicker> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: _isDarkMode ? Brightness.dark : Brightness.light,
-        primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
       ),
       home: Scaffold(
         backgroundColor: _isDarkMode ? Colors.black : Colors.white,
