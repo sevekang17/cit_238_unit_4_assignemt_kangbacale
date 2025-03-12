@@ -8,6 +8,8 @@ void main() {
 }
 
 class PhotoPicker extends StatefulWidget {
+  const PhotoPicker({super.key});
+
   @override
   _PhotoPickerState createState() => _PhotoPickerState();
 }
@@ -29,10 +31,10 @@ class _PhotoPickerState extends State<PhotoPicker> {
     });
   }
 
-  Future<void> _toggleTheme() async {
+  Future<void> _toggleTheme(bool value) async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _isDarkMode = !_isDarkMode;
+      _isDarkMode = value;
       prefs.setBool('darkMode', _isDarkMode);
     });
   }
@@ -75,9 +77,17 @@ class _PhotoPickerState extends State<PhotoPicker> {
                 ),
               ),
               ListTile(
-                leading: Icon(_isDarkMode ? Icons.wb_sunny : Icons.nightlight_round),
-                title: Text("Change Background Color"),
-                onTap: _toggleTheme,
+                leading: Icon(_isDarkMode ? Icons.nightlight_round : Icons.wb_sunny),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Dark Mode"),
+                    Switch(
+                      value: _isDarkMode,
+                      onChanged: _toggleTheme,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
